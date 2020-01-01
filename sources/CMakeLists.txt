@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.1)
+SET(CMAKE_APP_NAME "Algorithms")
+project (${CMAKE_APP_NAME})
+INCLUDE_DIRECTORIES(tools)
+INCLUDE_DIRECTORIES(sorting)
+add_executable(${CMAKE_APP_NAME} main.cpp tools/Tools.cpp tools/Tools.h sorting/sorting.cpp sorting/sorting.h)
