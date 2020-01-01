@@ -62,11 +62,12 @@ namespace Algorithms
 		template<typename T>
 		void merge(std::vector<T>& v, int p, int q, int r)
 		{
-			size_t n1 = q - p + 1;
-			size_t n2 = r - q;
+			int n1 = q - p + 1;
+			int n2 = r - q;
 
-			unsigned int i = 0;
-			unsigned int j = 0;
+			int i = 0;
+			int j = 0;
+			int k = 0;
 
 			std::vector<T> vleft(n1 + 1, 0);
 			vleft[n1] = INT_MAX;
@@ -84,7 +85,7 @@ namespace Algorithms
 
 			i = 0;
 			j = 0;
-			for (unsigned int k = p; k <= r; ++k)
+			for (k = p; k <= r; ++k)
 			{
 				if (vleft[i] <= vright[j])
 				{
@@ -93,7 +94,7 @@ namespace Algorithms
 				}
 				else
 				{
-					v[k] == vright[j];
+					v[k] = vright[j];
 					++j;
 				}
 			}
@@ -106,7 +107,7 @@ namespace Algorithms
 			{
 				int q = (p + r) / 2;
 				merge_sort(v, p, q);
-				merge_sort(v, q+1, r);
+				merge_sort(v, q + 1, r);
 				merge(v, p, q, r);
 			}
 		}
@@ -114,7 +115,7 @@ namespace Algorithms
 		template<typename T>
 		void merge_sort(std::vector<T>& v)
 		{
-			merge_sort(v, 0, v.size());
+			merge_sort(v, 0, v.size()-1);
 		}
 	}
 }

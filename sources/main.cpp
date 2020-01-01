@@ -4,11 +4,12 @@
 #include "Tools.h"
 #include "Sorting.h"
 
+#define VECTOR_LENGTH 25
 
 int main(int argc, char** argv)
 {
 	std::vector<int> v;
-	Tools::generateRandomVector(v, 20, 1, 100);
+	Tools::generateRandomVector(v, VECTOR_LENGTH, 1, 100);
 	std::cout << "Input Vector" << std::endl;
 	Tools::printVector(v);
 	std::cout << "=========================================" << std::endl;
