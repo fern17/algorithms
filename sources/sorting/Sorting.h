@@ -69,15 +69,13 @@ namespace Algorithms
 			int j = 0;
 			int k = 0;
 
-			std::vector<T> vleft(n1 + 1, 0);
-			vleft[n1] = INT_MAX;
+			std::vector<T> vleft(n1, 0);
 			for (i = 0; i < n1; ++i)
 			{
 				vleft[i] = v[p + i];
 			}
 
-			std::vector<T> vright(n2 + 1, 0);
-			vright[n2] = INT_MAX;
+			std::vector<T> vright(n2, 0);
 			for (j = 0; j < n2; ++j)
 			{
 				vright[j] = v[q + j + 1];
@@ -87,7 +85,21 @@ namespace Algorithms
 			j = 0;
 			for (k = p; k <= r; ++k)
 			{
-				if (vleft[i] <= vright[j])
+				if (i == n1)
+				{
+					for (; j < n2; ++j)
+					{
+						v[k++] = vright[j];
+					}
+				}
+				else if (j == n2)
+				{
+					for (; i < n1; ++i)
+					{
+						v[k++] = vleft[i];
+					}
+				}
+				else if (vleft[i] <= vright[j])
 				{
 					v[k] = vleft[i];
 					++i;

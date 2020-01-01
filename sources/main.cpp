@@ -4,7 +4,7 @@
 #include "Tools.h"
 #include "Sorting.h"
 
-#define VECTOR_LENGTH 25
+#define VECTOR_LENGTH 10
 
 int main(int argc, char** argv)
 {
