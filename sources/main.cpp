@@ -3,13 +3,13 @@
 
 #include "Tools.h"
 #include "Sorting.h"
+#include "Searching.h"
 
-#define VECTOR_LENGTH 10
-
-int main(int argc, char** argv)
+void testSorting(int vectorLength)
 {
 	std::vector<int> v;
-	Tools::generateRandomVector(v, VECTOR_LENGTH, 1, 100);
+	Tools::generateRandomVector(v, vectorLength, 1, 100);
+
 	std::cout << "Input Vector" << std::endl;
 	Tools::printVector(v);
 	std::cout << "=========================================" << std::endl;
@@ -18,13 +18,13 @@ int main(int argc, char** argv)
 	std::vector<int> v2(v);
 	std::vector<int> v3(v);
 	std::vector<int> v4(v);
-	
-	
+
+
 	std::cout << "Insertion Sort" << std::endl;
 	Algorithms::Sorting::insertion_sort(v1);
 	Tools::printVector(v1);
 	std::cout << "=========================================" << std::endl;
-	
+
 	std::cout << "Bubble Sort" << std::endl;
 	Algorithms::Sorting::bubble_sort(v2);
 	Tools::printVector(v2);
@@ -39,6 +39,30 @@ int main(int argc, char** argv)
 	Algorithms::Sorting::merge_sort(v4);
 	Tools::printVector(v4);
 	std::cout << "=========================================" << std::endl;
+}
+
+void testSearching()
+{
+	std::vector<int> v = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+
+	std::cout << "Input Vector" << std::endl;
+	Tools::printVector(v);
+	std::cout << "=========================================" << std::endl;
+
+	std::vector<int> v1(v);
+	std::cout << "Maximum subarray" << std::endl;
+	int r1sum = 0;
+	std::vector<int> r1 = Algorithms::Searching::find_maximum_subarray(v1, r1sum);
+	Tools::printVector(r1);
+	std::cout << "Sum = " << r1sum << std::endl;
+	std::cout << "=========================================" << std::endl;
+	std::cout << "=========================================" << std::endl;
+}
+
+int main(int argc, char** argv)
+{
+	//testSorting(10);
+	testSearching();
 
 	return 0;
 }
