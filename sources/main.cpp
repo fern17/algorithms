@@ -4,6 +4,7 @@
 #include "Tools.h"
 #include "Sorting.h"
 #include "Searching.h"
+#include "Heap.h"
 
 void testSorting(int vectorLength)
 {
@@ -18,6 +19,7 @@ void testSorting(int vectorLength)
 	std::vector<int> v2(v);
 	std::vector<int> v3(v);
 	std::vector<int> v4(v);
+	std::vector<int> v5(v);
 
 
 	std::cout << "Insertion Sort" << std::endl;
@@ -38,6 +40,11 @@ void testSorting(int vectorLength)
 	std::cout << "Merge Sort" << std::endl;
 	Algorithms::Sorting::merge_sort(v4);
 	Tools::print(v4);
+	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Heap Sort" << std::endl;
+	Algorithms::Sorting::heap_sort(v5);
+	Tools::print(v5);
 	std::cout << "=========================================" << std::endl;
 }
 
@@ -63,6 +70,6 @@ int main(int argc, char** argv)
 {
 	testSorting(10);
 	testSearching();
-
+	
 	return 0;
 }

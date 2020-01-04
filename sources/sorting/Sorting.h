@@ -1,7 +1,13 @@
 #ifndef SORTING_H
 #define SORTING_H
+
+#include "Heap.h"
+
 #include <vector>
 #include <iostream>
+
+
+
 namespace Algorithms
 {
 	namespace Sorting
@@ -129,6 +135,19 @@ namespace Algorithms
 		void merge_sort(std::vector<T>& v)
 		{
 			merge_sort(v, 0, v.size()-1);
+		}
+
+		template<typename T>
+		void heap_sort(std::vector<T>& v)
+		{
+			Heap<T> h(v);
+			for (unsigned int i = v.size()-1; i >= 1; --i)
+			{
+				h.swap(0, i);
+				h.decreaseHeapSize();
+				h.max_heapify(0);
+			}
+			v = h.get();
 		}
 	}
 }
