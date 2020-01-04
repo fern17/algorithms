@@ -5,9 +5,12 @@
 #include "Sorting.h"
 #include "Searching.h"
 #include "Heap.h"
+#include "PriorityQueue.h"
 
 void testSorting(int vectorLength)
 {
+	std::cout << "Testing Sorting Algorithms" << std::endl;
+
 	std::vector<int> v;
 	Tools::generateRandomVector(v, vectorLength, 1, 100);
 
@@ -50,6 +53,8 @@ void testSorting(int vectorLength)
 
 void testSearching()
 {
+	std::cout << "Testing Search Algorithms " << std::endl;
+
 	std::vector<int> v = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
 
 	std::cout << "Input Vector" << std::endl;
@@ -66,10 +71,43 @@ void testSearching()
 	std::cout << "=========================================" << std::endl;
 }
 
+void testDataStructures()
+{
+	std::cout << "Testing Data Structures" << std::endl;
+
+	std::vector<int> v{ 16, 14, 10, 8, 2, 4, 7, 1 , 9, 3 };
+
+	std::cout << "Input Vector" << std::endl;
+	Tools::print(v);
+	std::cout << "=========================================" << std::endl;
+	std::vector<int> v1(v);
+	std::vector<int> v2(v);
+
+	std::cout << "Heap" << std::endl;
+	Algorithms::Heap<int> h(v1);
+	Tools::print(h.get());
+	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Priority Queue" << std::endl;
+	Algorithms::PriorityQueue<int> pq(v2);
+	Tools::print(pq.get());
+	pq.insert(20);
+	pq.insert(50);
+	Tools::print(pq.get());
+	std::cout << "Max All = " << pq.maximum() << std::endl;
+	std::cout << "Emptying Priority Queue" << std::endl;
+	while (pq.getHeapSize() > 0)
+	{
+		std::cout << "Max = " << pq.extractMax() << std::endl;
+	}
+	std::cout << "=========================================" << std::endl;
+}
+
 int main(int argc, char** argv)
 {
 	testSorting(10);
 	testSearching();
+	testDataStructures();
 	
 	return 0;
 }

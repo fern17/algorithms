@@ -69,7 +69,7 @@ public:
 	}
 
 
-private:
+protected:
 	inline unsigned int parent(unsigned int i) { return (i / 2); }
 	inline unsigned int left(unsigned int i) { return (2 * i); }
 	inline unsigned int right(unsigned int i) { return (2 * i + 1); }
