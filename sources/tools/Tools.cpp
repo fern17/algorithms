@@ -2,15 +2,6 @@
 #include <iostream>
 namespace Tools
 {
-	void printVector(std::vector<int>& v, std::string separator)
-	{
-		for (auto i : v)
-		{
-			std::cout << i << separator;
-		}
-		std::cout << std::endl;
-	}
-
 	void generateRandomVector(std::vector<int>& v, unsigned int n, int lower_bound, int upper_bound)
 	{
 		// TODO: modernize

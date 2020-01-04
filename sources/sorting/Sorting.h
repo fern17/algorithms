@@ -22,13 +22,14 @@ namespace Algorithms
 			}
 		}
 
+
 		template<typename T>
 		void bubble_sort(std::vector<T>& v)
 		{
 			size_t sz = v.size();
-			for (unsigned int i = 0; i < sz - 1; ++i)
+			for (size_t i = 0; i < sz - 1; ++i)
 			{
-				for (unsigned int j = sz - 1; j >= (i + 1); --j)
+				for (size_t j = sz - 1; j >= (i + 1); --j)
 				{
 					if (v[j] < v[j - 1])
 					{

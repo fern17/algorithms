@@ -16,7 +16,7 @@ namespace Algorithms
 			int sum = 0;
 			int max_left = 0;
 			int max_right = 0;
-			for (int i = mid; i > low; --i)
+			for (unsigned int i = mid; i > low; --i)
 			{
 				sum = sum + v[i];
 				if (sum > left_sum)
@@ -27,7 +27,7 @@ namespace Algorithms
 			}
 
 			sum = 0;
-			for (int j = mid + 1; j < high; ++j)
+			for (unsigned int j = mid + 1; j < high; ++j)
 			{
 				sum = sum + v[j];
 				if (sum > right_sum)
