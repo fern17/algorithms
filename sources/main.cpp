@@ -16,6 +16,7 @@ void testSorting(int vectorLength)
 
 	std::cout << "Input Vector" << std::endl;
 	Tools::print(v);
+	std::cout << "Sorted = " << Tools::is_sorted(v) << std::endl;
 	std::cout << "=========================================" << std::endl;
 
 	std::vector<int> v1(v);
@@ -23,31 +24,54 @@ void testSorting(int vectorLength)
 	std::vector<int> v3(v);
 	std::vector<int> v4(v);
 	std::vector<int> v5(v);
+	std::vector<int> v6(v);
+	std::vector<int> v7(v);
+	std::vector<int> v8(v);
 
 
 	std::cout << "Insertion Sort" << std::endl;
 	Algorithms::Sorting::insertion_sort(v1);
 	Tools::print(v1);
+	std::cout << "Sorted = " << Tools::is_sorted(v1) << std::endl;
 	std::cout << "=========================================" << std::endl;
 
 	std::cout << "Bubble Sort" << std::endl;
 	Algorithms::Sorting::bubble_sort(v2);
 	Tools::print(v2);
+	std::cout << "Sorted = " << Tools::is_sorted(v2) << std::endl;
 	std::cout << "=========================================" << std::endl;
 
 	std::cout << "Selection Sort" << std::endl;
 	Algorithms::Sorting::selection_sort(v3);
 	Tools::print(v3);
+	std::cout << "Sorted = " << Tools::is_sorted(v3) << std::endl;
 	std::cout << "=========================================" << std::endl;
 
 	std::cout << "Merge Sort" << std::endl;
 	Algorithms::Sorting::merge_sort(v4);
 	Tools::print(v4);
+	std::cout << "Sorted = " << Tools::is_sorted(v4) << std::endl;
 	std::cout << "=========================================" << std::endl;
 
 	std::cout << "Heap Sort" << std::endl;
 	Algorithms::Sorting::heap_sort(v5);
 	Tools::print(v5);
+	std::cout << "Sorted = " << Tools::is_sorted(v5) << std::endl;
+	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Quick Sort" << std::endl;
+	std::cout << "== Simple Partition ==" << std::endl;
+	Algorithms::Sorting::quick_sort(v6, Algorithms::Sorting::QUICKSORT_METHOD_SIMPLE_PARTITION);
+	Tools::print(v6);
+	std::cout << "Sorted = " << Tools::is_sorted(v6) << std::endl;
+	std::cout << "== Randomized Partition ==" << std::endl;
+	Algorithms::Sorting::quick_sort(v7, Algorithms::Sorting::QUICKSORT_METHOD_RANDOMIZED_PARTITION);
+	Tools::print(v7);
+	std::cout << "Sorted = " << Tools::is_sorted(v7) << std::endl;
+	std::cout << "== Hoare Partition ==" << std::endl;
+	Algorithms::Sorting::quick_sort(v8, Algorithms::Sorting::QUICKSORT_METHOD_HOARE_PARTITION);
+	Tools::print(v8);
+	std::cout << "Sorted = " << Tools::is_sorted(v8) << std::endl;
 	std::cout << "=========================================" << std::endl;
 }
 
@@ -105,9 +129,9 @@ void testDataStructures()
 
 int main(int argc, char** argv)
 {
-	testSorting(10);
-	testSearching();
-	testDataStructures();
+	testSorting(20);
+	//testSearching();
+	//testDataStructures();
 	
 	return 0;
 }

@@ -24,6 +24,31 @@ namespace Tools
     }
 
 	void generateRandomVector(std::vector<int>& v, unsigned int n, int lower_bound, int upper_bound);
+
+    int random(int lower_bound, int upper_bound);
+
+    template<typename Container>
+    bool is_sorted(std::vector<Container>& v)
+    {
+        auto beg = std::begin(v);
+        auto end = std::end(v);
+        auto i = beg;
+        auto j = beg;
+        ++j;
+        while (j != end && *i <= *j )
+        {
+            ++i;
+            ++j;
+        }
+        if (j == end)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 };
 
 #endif

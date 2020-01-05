@@ -12,6 +12,14 @@ namespace Algorithms
 {
 	namespace Sorting
 	{
+
+		enum
+		{
+			QUICKSORT_METHOD_SIMPLE_PARTITION = 0,
+			QUICKSORT_METHOD_RANDOMIZED_PARTITION = 1,
+			QUICKSORT_METHOD_HOARE_PARTITION = 2
+		};
+
 		template<typename T>
 		void insertion_sort(std::vector<T>& v)
 		{
@@ -148,6 +156,110 @@ namespace Algorithms
 				h.max_heapify(0);
 			}
 			v = h.get();
+		}
+
+		template<typename T>
+		int quick_sort_simple_partition(std::vector<T>& v, int p, int r)
+		{
+			T x = v[r];
+			int i = p - 1;
+			for (int j = p; j < r; ++j)
+			{
+				if (v[j] <= x)
+				{
+					++i;
+					std::swap(v[i], v[j]);
+				}
+			}
+			std::swap(v[i + 1], v[r]);
+			return (i + 1);
+		}
+
+		template<typename T>
+		int quick_sort_randomized_partition(std::vector<T>& v, int p, int r)
+		{
+			int i = Tools::random(p, r);
+			std::swap(v[i], v[r]);
+			return quick_sort_simple_partition(v, p, r);
+		}
+
+		template<typename T>
+		int quick_sort_hoare_partition(std::vector<T>& v, int p, int r)
+		{
+			T x = v[p];
+			int i = p - 1;
+			int j = r + 1;
+			//size_t sz = v.size();
+			while (true)
+			{
+				do
+				{
+					--j;
+				} while (v[j] > x);
+
+				do
+				{
+					++i;
+				} while (v[i] < x);
+
+				if (i < j)
+				{
+					std::swap(v[i], v[j]);
+				}
+				else
+				{
+					return j;
+				}
+			}
+		}
+
+		template<typename T>
+		void quick_sort(std::vector<T>& v, int p, int r, int method)
+		{
+			if (p < r)
+			{
+				int q;
+				switch(method)
+				{ 
+					case QUICKSORT_METHOD_SIMPLE_PARTITION:
+					{
+						q = quick_sort_simple_partition(v, p, r);
+						break;
+					}
+					case QUICKSORT_METHOD_RANDOMIZED_PARTITION:
+					{
+						q = quick_sort_randomized_partition(v, p, r);
+						break;
+					}
+					case QUICKSORT_METHOD_HOARE_PARTITION:
+					{
+						q = quick_sort_hoare_partition(v, p, r);
+						break;
+					}
+					default:
+					{
+						q = quick_sort_simple_partition(v, p, r);
+						break;
+					}
+				}
+				if (method == QUICKSORT_METHOD_HOARE_PARTITION)
+				{
+					quick_sort(v, p, q, method); // index q is not in the correct place
+					quick_sort(v, q + 1, r, method);
+				}
+				else
+				{
+					quick_sort(v, p, q - 1, method); // q is in the correct place, no need to use it in recursion
+					quick_sort(v, q + 1, r, method);
+				}
+				
+			}
+		}
+
+		template<typename T>
+		void quick_sort(std::vector<T>& v, int method = QUICKSORT_METHOD_SIMPLE_PARTITION)
+		{
+			quick_sort(v, 0, v.size() - 1, method);
 		}
 	}
 }
