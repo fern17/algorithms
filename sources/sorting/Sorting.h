@@ -261,6 +261,63 @@ namespace Algorithms
 		{
 			quick_sort(v, 0, v.size() - 1, method);
 		}
+
+		void counting_sort(std::vector<int>& v)
+		{
+			size_t n = v.size();
+			int k = *(std::max_element(v.begin(), v.end()))+1;
+			std::vector<int> b(n, 0);
+			std::vector<int> c(k, 0);
+			for (size_t j = 0; j < n; ++j)
+			{
+				++c[v[j]];
+			}
+			for (int i = 1; i < k; ++i)
+			{
+				c[i] += c[i - 1];
+			}
+			for (int j = n-1; j >= 0; --j)
+			{
+				b[c[v[j]]-1] = v[j];
+				--c[v[j]];
+			}
+			v = b;
+		}
+
+		void radix_sort(std::vector<int>& v)
+		{
+			size_t n = v.size();
+			int maxe = *std::max_element(v.begin(), v.end());
+			for (int expe = 1; maxe / expe > 0; expe *= 10)
+			{
+				counting_sort(v);
+			}
+		}
+
+		void bucket_sort(std::vector<double>& v)
+		{
+			size_t n = v.size();
+			std::vector<std::vector<double> > b(n);
+			
+			for (size_t i = 0; i < n; ++i)
+			{
+				b[std::floor(n * v[i])].push_back(v[i]);
+			}
+			for (size_t i = 0; i < n; ++i)
+			{
+				insertion_sort(b[i]);
+			}
+			v.clear();
+			v.reserve(n);
+			for (size_t i = 0; i < n; ++i)
+			{
+				std::vector<double>& bb = b[i];
+				for (size_t j = 0; j < bb.size(); ++j)
+				{
+					v.push_back(bb[j]);
+				}
+			}
+		}
 	}
 }
 

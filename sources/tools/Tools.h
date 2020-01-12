@@ -24,8 +24,10 @@ namespace Tools
     }
 
 	void generateRandomVector(std::vector<int>& v, unsigned int n, int lower_bound, int upper_bound);
+    void generateRandomVector(std::vector<double>& v, unsigned int n, double lower_bound, double upper_bound);
 
     int random(int lower_bound, int upper_bound);
+    double random(double lower_bound, double upper_bound);
 
     template<typename Container>
     bool is_sorted(std::vector<Container>& v)

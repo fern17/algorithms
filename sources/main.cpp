@@ -12,11 +12,18 @@ void testSorting(int vectorLength)
 	std::cout << "Testing Sorting Algorithms" << std::endl;
 
 	std::vector<int> v;
+	std::vector<double> vd;
 	Tools::generateRandomVector(v, vectorLength, 1, 100);
+	Tools::generateRandomVector(vd, vectorLength, 0.0, 1.0);
 
 	std::cout << "Input Vector" << std::endl;
 	Tools::print(v);
 	std::cout << "Sorted = " << Tools::is_sorted(v) << std::endl;
+	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Input Vector Double" << std::endl;
+	Tools::print(vd);
+	std::cout << "Sorted = " << Tools::is_sorted(vd) << std::endl;
 	std::cout << "=========================================" << std::endl;
 
 	std::vector<int> v1(v);
@@ -27,6 +34,9 @@ void testSorting(int vectorLength)
 	std::vector<int> v6(v);
 	std::vector<int> v7(v);
 	std::vector<int> v8(v);
+	std::vector<int> v9(v);
+	std::vector<int> v10(v);
+	std::vector<double> v11(vd);
 
 
 	std::cout << "Insertion Sort" << std::endl;
@@ -73,6 +83,25 @@ void testSorting(int vectorLength)
 	Tools::print(v8);
 	std::cout << "Sorted = " << Tools::is_sorted(v8) << std::endl;
 	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Counting Sort" << std::endl;
+	Algorithms::Sorting::counting_sort(v9);
+	Tools::print(v9);
+	std::cout << "Sorted = " << Tools::is_sorted(v9) << std::endl;
+	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Radix Sort" << std::endl;
+	Algorithms::Sorting::radix_sort(v10);
+	Tools::print(v10);
+	std::cout << "Sorted = " << Tools::is_sorted(v10) << std::endl;
+	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Bucket Sort" << std::endl;
+	Algorithms::Sorting::bucket_sort(v11);
+	Tools::print(v11);
+	std::cout << "Sorted = " << Tools::is_sorted(v11) << std::endl;
+	std::cout << "=========================================" << std::endl;
+
 }
 
 void testSearching()
@@ -129,7 +158,7 @@ void testDataStructures()
 
 int main(int argc, char** argv)
 {
-	testSorting(20);
+	testSorting(10);
 	//testSearching();
 	//testDataStructures();
 	
