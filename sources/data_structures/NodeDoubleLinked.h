@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+namespace Algorithms
+{
 /**
 \brief A class to handle a Node Double Linked (i.e.: it contains a link to the next node and to the previous one).
 \see Queue
@@ -27,5 +29,5 @@ public:
 	NodeDoubleLinked* next;
 	NodeDoubleLinked* prev;
 };
-
+}
 #endif

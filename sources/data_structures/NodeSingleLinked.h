@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+namespace Algorithms
+{
 /**
 \brief A class to handle a Node Single Linked (i.e.: it contains a link to the next node only).
 \see Stack
@@ -24,5 +26,6 @@ public:
 	T value;
 	NodeSingleLinked* next;
 };
+}
 
 #endif

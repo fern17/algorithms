@@ -50,10 +50,10 @@ public:
 
 	void max_heapify(unsigned int i)
 	{
-		unsigned int l = left(i);
-		unsigned int r = right(i);
+		int l = left(i);
+		int r = right(i);
 
-		unsigned int largest = 0;
+		int largest = 0;
 		if (l < m_heapSize && m_data[l] > m_data[i])
 		{
 			largest = l;
@@ -77,13 +77,13 @@ public:
 
 
 protected:
-	inline unsigned int parent(unsigned int i) { return (i / 2); }
-	inline unsigned int left(unsigned int i) { return (2 * i); }
-	inline unsigned int right(unsigned int i) { return (2 * i + 1); }
+	inline int parent(int i) { return (i / 2); }
+	inline int left(int i) { return (2 * i); }
+	inline int right(int i) { return (2 * i + 1); }
 
 	void build_max_heap()
 	{
-		m_heapSize = m_data.size();
+		m_heapSize = static_cast<int> (m_data.size());
 		int start = m_heapSize / 2;
 		for (int i = start; i >= 0; --i)
 		{

@@ -102,7 +102,8 @@ namespace Algorithms
 		**/
 		std::vector<int> find_maximum_subarray(std::vector<int>& v, int& sum)
 		{
-			std::tuple<int, int, int> result = find_maximum_subarray(v, 0, v.size()-1);
+			int n = static_cast<int> (v.size() - 1);
+			std::tuple<int, int, int> result = find_maximum_subarray(v, 0, n);
 			int& minIndex = std::get<0>(result);
 			int& maxIndex = std::get<1>(result);
 			sum = std::get<2>(result);

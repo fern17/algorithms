@@ -170,7 +170,8 @@ namespace Algorithms
 		template<typename T>
 		void merge_sort(std::vector<T>& v)
 		{
-			merge_sort(v, 0, v.size()-1);
+			int n = static_cast<int>(v.size() - 1);
+			merge_sort(v, 0, n);
 		}
 
 		/**
@@ -182,7 +183,8 @@ namespace Algorithms
 		void heap_sort(std::vector<T>& v)
 		{
 			Heap<T> h(v);
-			for (unsigned int i = v.size()-1; i >= 1; --i)
+			int n = static_cast<int> (v.size() - 1);
+			for (int i = n; i >= 1; --i)
 			{
 				h.swap(0, i);
 				h.decreaseHeapSize();
@@ -316,7 +318,8 @@ namespace Algorithms
 		template<typename T>
 		void quick_sort(std::vector<T>& v, int method = QUICKSORT_METHOD_SIMPLE_PARTITION)
 		{
-			quick_sort(v, 0, v.size() - 1, method);
+			int n = static_cast<int> (v.size() - 1);
+			quick_sort(v, 0, n, method);
 		}
 
 		/**
@@ -326,11 +329,11 @@ namespace Algorithms
 		**/
 		void counting_sort(std::vector<int>& v)
 		{
-			size_t n = v.size();
+			int n = static_cast<int> (v.size());
 			int k = *(std::max_element(v.begin(), v.end()))+1;
 			std::vector<int> b(n, 0);
 			std::vector<int> c(k, 0);
-			for (size_t j = 0; j < n; ++j)
+			for (int j = 0; j < n; ++j)
 			{
 				++c[v[j]];
 			}
@@ -373,7 +376,7 @@ namespace Algorithms
 			
 			for (size_t i = 0; i < n; ++i)
 			{
-				b[std::floor(n * v[i])].push_back(v[i]);
+				b[(int) std::floor(n * v[i])].push_back(v[i]);
 			}
 			for (size_t i = 0; i < n; ++i)
 			{
