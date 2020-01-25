@@ -6,6 +6,8 @@
 #include "Searching.h"
 #include "Heap.h"
 #include "PriorityQueue.h"
+#include "Stack.h"
+#include "Queue.h"
 
 void testSorting(int vectorLength)
 {
@@ -142,6 +144,7 @@ void testDataStructures()
 	std::cout << "=========================================" << std::endl;
 
 	std::cout << "Priority Queue" << std::endl;
+	
 	Algorithms::PriorityQueue<int> pq(v2);
 	Tools::print(pq.get());
 	pq.insert(20);
@@ -154,13 +157,34 @@ void testDataStructures()
 		std::cout << "Max = " << pq.extractMax() << std::endl;
 	}
 	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Stack" << std::endl;
+	Algorithms::Stack<int> myStack;
+	std::cout << "Pushed: 10" << std::endl; myStack.push(10); myStack.print();
+	std::cout << "Pushed: 20" << std::endl; myStack.push(20); myStack.print();
+	std::cout << "Popped: " << myStack.pop() << std::endl; myStack.print();
+	std::cout << "Pushed: 30" << std::endl; myStack.push(30); myStack.print();
+	std::cout << "Popped: " << myStack.pop() << std::endl; myStack.print();
+	std::cout << "Popped: " << myStack.pop() << std::endl; myStack.print();
+
+	std::cout << "Queue" << std::endl;
+	Algorithms::Queue<int> myQueue;
+	std::cout << "Pushed: 10" << std::endl; myQueue.push(10); myQueue.print();
+	std::cout << "Pushed: 20" << std::endl; myQueue.push(20); myQueue.print();
+	std::cout << "Popped: " << myQueue.pop() << std::endl; myQueue.print();
+	std::cout << "Pushed: 30" << std::endl;  myQueue.push(30); myQueue.print();
+	std::cout << "Popped: " << myQueue.pop() << std::endl; myQueue.print();
+	std::cout << "Popped: " << myQueue.pop() << std::endl; myQueue.print();
+	std::cout << "Pushed: 40" << std::endl; myQueue.push(40); myQueue.print();
+	
+	std::cout << "=========================================" << std::endl;
 }
 
 int main(int argc, char** argv)
 {
-	testSorting(10);
+	//testSorting(10);
 	//testSearching();
-	//testDataStructures();
+	testDataStructures();
 	
 	return 0;
 }
