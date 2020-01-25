@@ -6,7 +6,10 @@
 namespace Algorithms
 {
 
-// Max priority Queue
+/**
+	\brief A class that handles a Max Priority Queue.
+	\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 6.5.
+**/
 template<typename T>
 class PriorityQueue : public Heap<T>
 {

@@ -6,8 +6,16 @@
 
 namespace Algorithms
 {
+	/**
+	\brief A namespace that stores all the Searching algorithms.
+	**/
 	namespace Searching
 	{
+		/**
+		\brief A function that finds the maximum crossing sub array.
+		\see \ref merge_sort
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 4.1.
+		**/
 		std::tuple<int, int, int> find_max_crossing_subarray(std::vector<int>& v, unsigned int low, unsigned int mid, unsigned int high)
 		{
 			int left_sum = INT_MIN;
@@ -39,6 +47,11 @@ namespace Algorithms
 			return std::make_tuple(max_left, max_right, left_sum + right_sum);
 		}
 
+		/**
+		\brief A helper function for \ref find_max_crossing_subarray .
+		\see \ref merge_sort
+		\see \ref find_max_crossing_subarray
+		**/
 		std::tuple<int, int, int> find_maximum_subarray(std::vector<int>& v, unsigned int low, unsigned int high)
 		{
 			if (high == low)
@@ -80,6 +93,13 @@ namespace Algorithms
 				}
 			}
 		}
+		
+		/**
+		\brief A function that finds the maximum subarray.
+		\see \ref merge_sort
+		\see \ref find_max_crossing_subarray
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 4.1.
+		**/
 		std::vector<int> find_maximum_subarray(std::vector<int>& v, int& sum)
 		{
 			std::tuple<int, int, int> result = find_maximum_subarray(v, 0, v.size()-1);

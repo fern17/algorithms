@@ -1,6 +1,10 @@
 #include "Tools.h"
 #include <iostream>
 #include <random>
+
+/**
+	\brief A namespace to group all utilities that are used from other classes.
+**/
 namespace Tools
 {
 	void generateRandomVector(std::vector<int>& v, unsigned int n, int lower_bound, int upper_bound)

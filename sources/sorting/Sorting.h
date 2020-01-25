@@ -6,20 +6,29 @@
 #include <vector>
 #include <iostream>
 
-
-
 namespace Algorithms
 {
+	/**
+	\brief A namespace that stores all the Sorting algorithms.
+	**/
 	namespace Sorting
 	{
 
-		enum
+		/**
+		\brief An enum to define the partition method used in QuickSort. 
+		\see \ref quick_sort
+		**/
+		enum QuickSortMethod
 		{
-			QUICKSORT_METHOD_SIMPLE_PARTITION = 0,
-			QUICKSORT_METHOD_RANDOMIZED_PARTITION = 1,
-			QUICKSORT_METHOD_HOARE_PARTITION = 2
+			QUICKSORT_METHOD_SIMPLE_PARTITION = 0,		//!< Configures Quicksort to use the Simple Partition Method.
+			QUICKSORT_METHOD_RANDOMIZED_PARTITION = 1,	//!< Configures Quicksort to use the Randomized Partition Method.
+			QUICKSORT_METHOD_HOARE_PARTITION = 2		//!< Configures Quicksort to use the Hoare Partition Method.
 		};
 
+		/**
+		\brief A function that sorts a vector using Insertion Sort.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 2.1.
+		**/
 		template<typename T>
 		void insertion_sort(std::vector<T>& v)
 		{
@@ -36,7 +45,10 @@ namespace Algorithms
 			}
 		}
 
-
+		/**
+		\brief A function that sorts a vector using Bubble Sort.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 2. Problem 2.2.
+		**/
 		template<typename T>
 		void bubble_sort(std::vector<T>& v)
 		{
@@ -53,6 +65,10 @@ namespace Algorithms
 			}
 		}
 
+		/**
+		\brief A function that sorts a vector using Selection Sort.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 2. Problem 2.2.
+		**/
 		template<typename T>
 		void selection_sort(std::vector<T>& v)
 		{
@@ -74,6 +90,10 @@ namespace Algorithms
 			}
 		}
 
+		/**
+		\brief Helper function for \ref merge_sort
+		This functions does the merge of two ranges [p, q] and [q,r] defined in v.
+		**/
 		template<typename T>
 		void merge(std::vector<T>& v, int p, int q, int r)
 		{
@@ -127,6 +147,10 @@ namespace Algorithms
 			}
 		}
 
+		/**
+		\brief Helper function for \ref merge_sort
+		This function takes a lower and upper bound and divides the vector in half, calling recursively \ref merge_sort on each half and then calling \ref merge.
+		**/
 		template<typename T>
 		void merge_sort(std::vector<T>& v, int p, int r)
 		{
@@ -139,12 +163,21 @@ namespace Algorithms
 			}
 		}
 
+		/**
+		\brief A function that sorts a vector using Merge Sort.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 2.3.
+		**/
 		template<typename T>
 		void merge_sort(std::vector<T>& v)
 		{
 			merge_sort(v, 0, v.size()-1);
 		}
 
+		/**
+		\brief A function that sorts a vector using Heap Sort.
+		\see Heap
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 6.4.
+		**/
 		template<typename T>
 		void heap_sort(std::vector<T>& v)
 		{
@@ -158,6 +191,11 @@ namespace Algorithms
 			v = h.get();
 		}
 
+		/**
+		\brief Helper function for \ref quick_sort that sorts a vector v in the range [p,r] using a simple method for partitioning.
+		The pivot used for the partionning is the last element of the array.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 7.3.
+		**/
 		template<typename T>
 		int quick_sort_simple_partition(std::vector<T>& v, int p, int r)
 		{
@@ -175,6 +213,11 @@ namespace Algorithms
 			return (i + 1);
 		}
 
+		/**
+		\brief Helper function for \ref quick_sort that sorts a vector v in the range [p,r] using the Randomized method for partitioning.
+		The pivot used for the partionning is a random element of the array.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 7.3.
+		**/
 		template<typename T>
 		int quick_sort_randomized_partition(std::vector<T>& v, int p, int r)
 		{
@@ -183,6 +226,10 @@ namespace Algorithms
 			return quick_sort_simple_partition(v, p, r);
 		}
 
+		/**
+		\brief Helper function for \ref quick_sort that sorts a vector v in the range [p,r] using the Hoare method for partitioning.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 7. Problem 7.1
+		**/
 		template<typename T>
 		int quick_sort_hoare_partition(std::vector<T>& v, int p, int r)
 		{
@@ -213,6 +260,10 @@ namespace Algorithms
 			}
 		}
 
+		/**
+		\brief Helper function for \ref quick_sort that sorts a vector v in the range [p,r] using the defined method.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 7.
+		**/
 		template<typename T>
 		void quick_sort(std::vector<T>& v, int p, int r, int method)
 		{
@@ -256,12 +307,23 @@ namespace Algorithms
 			}
 		}
 
+		/**
+		\brief A function that sorts a vector using Quick Sort.
+		The second parameter can be used to choose which method to use for the partitioning.
+		\see QuickSortMethod
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 7.
+		**/
 		template<typename T>
 		void quick_sort(std::vector<T>& v, int method = QUICKSORT_METHOD_SIMPLE_PARTITION)
 		{
 			quick_sort(v, 0, v.size() - 1, method);
 		}
 
+		/**
+		\brief A function that sorts a vector using Counting Sort.
+		This method is only valid for integer data.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 8.2.
+		**/
 		void counting_sort(std::vector<int>& v)
 		{
 			size_t n = v.size();
@@ -284,6 +346,11 @@ namespace Algorithms
 			v = b;
 		}
 
+		/**
+		\brief A function that sorts a vector using Radix Sort.
+		This method is only valid for integer data.
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 8.3.
+		**/
 		void radix_sort(std::vector<int>& v)
 		{
 			size_t n = v.size();
@@ -294,6 +361,11 @@ namespace Algorithms
 			}
 		}
 
+		/**
+		\brief A function that sorts a vector using Bucket Sort.
+		This method is only valid for double data in range [0, 1]
+		\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 8.4.
+		**/
 		void bucket_sort(std::vector<double>& v)
 		{
 			size_t n = v.size();

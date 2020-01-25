@@ -3,9 +3,16 @@
 
 #include <vector>
 
+/**
+\brief General namespace that includes everything.
+**/
 namespace Algorithms
 {
 
+/**
+\brief A class to handle a Heap
+\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 6.
+**/
 template<typename T>
 class Heap
 {
