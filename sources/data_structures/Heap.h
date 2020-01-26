@@ -17,7 +17,7 @@ template<typename T>
 class Heap
 {
 public:
-	Heap() { }
+	Heap() { m_heapSize = 0; }
 	Heap(std::vector<T>& v)
 	{
 		setData(v);

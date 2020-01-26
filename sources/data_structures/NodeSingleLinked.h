@@ -14,7 +14,7 @@ template<typename T>
 class NodeSingleLinked
 {
 public:
-	NodeSingleLinked(T v) : value(v) {}
+	NodeSingleLinked(T v) : value(v), next(nullptr) { }
 	NodeSingleLinked() {}
 	~NodeSingleLinked() {}
 

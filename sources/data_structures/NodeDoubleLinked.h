@@ -14,11 +14,10 @@ template<typename T>
 class NodeDoubleLinked
 {
 public:
-	NodeDoubleLinked(T v) : value(v) { next = nullptr; prev = nullptr; }
-	NodeDoubleLinked() { next = nullptr; prev = nullptr; }
-	~NodeDoubleLinked()
-	{
-	}
+	NodeDoubleLinked() : next(nullptr), prev(nullptr) { }
+	NodeDoubleLinked(T v) : value(v), next(nullptr), prev(nullptr) { }
+	
+	~NodeDoubleLinked() { }
 
 	void print(std::string separator = " ")
 	{
