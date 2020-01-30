@@ -17,37 +17,47 @@ template<typename T>
 class Heap
 {
 public:
+	/*! Constructor. */
 	Heap() { m_heapSize = 0; }
+	
+	/*! Constructor that sets the data from a vector. */
 	Heap(std::vector<T>& v)
 	{
 		setData(v);
 	}
 
+	/*! Destructor. */
 	~Heap() { }
 
+	/*! Sets the data to the Hash from a vector. */
 	void setData(std::vector<T>& v)
 	{
 		std::copy(v.begin(), v.end(), std::back_inserter(m_data));
 		build_max_heap();
 	}
 
+	/*! Return the size of the heap (how many elements there are). */
 	unsigned int getHeapSize() const { return m_heapSize; }
 
+	/*! Decrease the size of the heap (minimum 0). */
 	void decreaseHeapSize() 
 	{
 		m_heapSize = std::max(m_heapSize - 1, 0);
 	}
 
+	/*! Swap two values of the heap given their indices. */
 	void swap(unsigned int i, unsigned int j)
 	{
 		std::swap(m_data[i], m_data[j]);
 	}
 
+	/*! Return the data in this heap. */
 	std::vector<int> get()
 	{
 		return m_data;
 	}
 
+	/*! Transform the data into a max heap from the index i. */
 	void max_heapify(unsigned int i)
 	{
 		int l = left(i);
@@ -75,12 +85,15 @@ public:
 		}
 	}
 
-
 protected:
+	/*! Obtain the parent of node i. */
 	inline int parent(int i) { return (i / 2); }
+	/*! Obtain the left child of node i. */
 	inline int left(int i) { return (2 * i); }
+	/*! Obtain the right child of node i. */
 	inline int right(int i) { return (2 * i + 1); }
 
+	/*! Build the max heap.*/
 	void build_max_heap()
 	{
 		m_heapSize = static_cast<int> (m_data.size());
@@ -91,8 +104,8 @@ protected:
 		}
 	}
 	
-	std::vector<T> m_data;
-	int m_heapSize;
+	std::vector<T> m_data;	//!< The data contained in the Heap.
+	int m_heapSize;			//!< Maximum available size for the Heap.
 };
 
 }
