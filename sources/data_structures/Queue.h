@@ -14,11 +14,14 @@ namespace Algorithms
 	class Queue
 	{
 	public:
+		/*! Constructor. */
 		Queue()
 		{
 			head = nullptr;
 			tail = nullptr;
 		}
+
+		/*! Destructor. */
 		~Queue()
 		{
 			NodeDoubleLinked<T>* ptr = head;
@@ -32,11 +35,13 @@ namespace Algorithms
 			head = tail = nullptr;
 		}
 
+		/*! Return true if the Queue is empty. */
 		bool empty()
 		{
 			return head == nullptr;
 		}
 
+		/*! Push a value to the Queue. */
 		void push(T v)
 		{
 			NodeDoubleLinked<T>* node = new NodeDoubleLinked<T>(v);
@@ -53,6 +58,7 @@ namespace Algorithms
 			
 		}
 
+		/*! Pop a value from the Queue. */
 		T pop()
 		{
 			if (empty())
@@ -81,6 +87,7 @@ namespace Algorithms
 			}
 		}
 
+		/*! Print the data. */
 		void print(std::string separator = " ")
 		{
 			NodeDoubleLinked<T>* ptr = head;
@@ -93,8 +100,8 @@ namespace Algorithms
 		}
 
 	public:
-		NodeDoubleLinked<T>* head;
-		NodeDoubleLinked<T>* tail;
+		NodeDoubleLinked<T>* head; //!< Pointer to the beginning of the Queue (where the values are pushed).
+		NodeDoubleLinked<T>* tail; //!< Pointer to the end of the Quee (from where the values are popped). 
 	};
 }
 #endif

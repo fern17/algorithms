@@ -8,6 +8,8 @@
 #include "PriorityQueue.h"
 #include "Stack.h"
 #include "Queue.h"
+#include "Hash.h"
+#include "BinaryTree.h"
 
 void testSorting(int vectorLength)
 {
@@ -166,6 +168,7 @@ void testDataStructures()
 	std::cout << "Pushed: 30" << std::endl; myStack.push(30); myStack.print();
 	std::cout << "Popped: " << myStack.pop() << std::endl; myStack.print();
 	std::cout << "Popped: " << myStack.pop() << std::endl; myStack.print();
+	std::cout << "=========================================" << std::endl;
 
 	std::cout << "Queue" << std::endl;
 	Algorithms::Queue<int> myQueue;
@@ -176,8 +179,35 @@ void testDataStructures()
 	std::cout << "Popped: " << myQueue.pop() << std::endl; myQueue.print();
 	std::cout << "Popped: " << myQueue.pop() << std::endl; myQueue.print();
 	std::cout << "Pushed: 40" << std::endl; myQueue.push(40); myQueue.print();
-	
 	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Hash" << std::endl;
+	Algorithms::Hash<int, int> myHash(10, ([](int v) { return v % 10; } ));
+	std::cout << "Inserted: 10" << std::endl; myHash.insert(10, 1); myHash.print();
+	std::cout << "Inserted: 21" << std::endl; myHash.insert(21, 2); myHash.print();
+	std::cout << "Inserted: 53" << std::endl; myHash.insert(53, 3); myHash.print();
+	std::cout << "Inserted: 45" << std::endl; myHash.insert(45, 4); myHash.print();
+	std::cout << "Inserted: 35" << std::endl; myHash.insert(35, 5); myHash.print();
+	std::cout << "Removed: 35" << std::endl; myHash.remove(35); myHash.print();
+	std::cout << "Removed: 53" << std::endl; myHash.remove(53); myHash.print();
+	std::cout << "Removed: 25" << std::endl; myHash.remove(25); myHash.print();
+	std::cout << "Trying to remove: 90" << std::endl; myHash.remove(90); myHash.print();
+
+	std::cout << "=========================================" << std::endl;
+
+	std::cout << "Binary Tree" << std::endl;
+	Algorithms::BinaryTree<int, int> myBinaryTree;
+	std::cout << "Inserted: 10" << std::endl; myBinaryTree.insert(10, 1); myBinaryTree.print();
+	std::cout << "Inserted: 20" << std::endl; myBinaryTree.insert(20, 2); myBinaryTree.print();
+	std::cout << "Inserted: 30" << std::endl; myBinaryTree.insert(30, 3); myBinaryTree.print();
+	std::cout << "Inserted: 5" << std::endl; myBinaryTree.insert(5, 4); myBinaryTree.print();
+	Algorithms::NodeBinaryTree<int, int>* binaryTreeMaxNode = myBinaryTree.maximum();
+	Algorithms::NodeBinaryTree<int, int>* binaryTreeMinNode = myBinaryTree.minimum();
+	std::cout << "Maximum = "; binaryTreeMaxNode->print(); std::cout << std::endl;
+	std::cout << "Minimum = "; binaryTreeMinNode->print(); std::cout << std::endl;
+	std::cout << "Removed the maximum: " << std::endl;  myBinaryTree.remove(binaryTreeMaxNode); myBinaryTree.print();
+	std::cout << "Removed the minimum: " << std::endl;  myBinaryTree.remove(binaryTreeMinNode); myBinaryTree.print();
+	
 }
 
 int main(int argc, char** argv)
@@ -188,3 +218,4 @@ int main(int argc, char** argv)
 	
 	return 0;
 }
+

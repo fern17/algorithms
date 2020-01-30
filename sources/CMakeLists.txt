@@ -19,4 +19,5 @@ data_structures/Queue.h
 data_structures/Hash.h 
 data_structures/Deque.h 
 data_structures/Tree.h 
+data_structures/NodeBinaryTree.h 
 data_structures/BinaryTree.h)
