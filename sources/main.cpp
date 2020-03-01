@@ -10,6 +10,7 @@
 #include "Queue.h"
 #include "Hash.h"
 #include "BinaryTree.h"
+#include "RBTree.h"
 
 void testSorting(int vectorLength)
 {
@@ -207,7 +208,37 @@ void testDataStructures()
 	std::cout << "Minimum = "; binaryTreeMinNode->print(); std::cout << std::endl;
 	std::cout << "Removed the maximum: " << std::endl;  myBinaryTree.remove(binaryTreeMaxNode); myBinaryTree.print();
 	std::cout << "Removed the minimum: " << std::endl;  myBinaryTree.remove(binaryTreeMinNode); myBinaryTree.print();
+
+	std::cout << "RB Tree" << std::endl;
+	Algorithms::RBTree<int, int> myRBTree;
+	//std::cout << "Inserted: 10" << std::endl; myRBTree.insert(10, 1); myRBTree.print();
+	//std::cout << "Inserted: 20" << std::endl; myRBTree.insert(20, 2); myRBTree.print();
+	//std::cout << "Inserted: 30" << std::endl; myRBTree.insert(30, 3); myRBTree.print();
+	//std::cout << "Inserted:  40" << std::endl; myRBTree.insert(40, 4); myRBTree.print();
+	for (int i = 1; i < 10; ++i)
+	{
+		std::cout << "Inserted: " << i << std::endl; 
+		myRBTree.insert(i, i*10); 
+		myRBTree.print();
+	}
+	std::cout << "Maximum: "; myRBTree.maximum()->print(); std::cout << std::endl;
+	std::cout << "Minimum: "; myRBTree.minimum()->print(); std::cout << std::endl;
 	
+	std::cout << "Deleting the Maximum: " << std::endl; myRBTree.remove(myRBTree.maximum()); myRBTree.print(); std::cout << std::endl;
+	std::cout << "Maximum: "; myRBTree.maximum()->print(); std::cout << std::endl;
+	std::cout << "Minimum: "; myRBTree.minimum()->print(); std::cout << std::endl;
+	
+	std::cout << "Deleting the Maximum: " << std::endl; myRBTree.remove(myRBTree.maximum()); myRBTree.print(); std::cout << std::endl;
+	std::cout << "Maximum: "; myRBTree.maximum()->print(); std::cout << std::endl;
+	std::cout << "Minimum: "; myRBTree.minimum()->print(); std::cout << std::endl;
+
+	std::cout << "Deleting the Minimum: " << std::endl; myRBTree.remove(myRBTree.minimum()); myRBTree.print(); std::cout << std::endl;
+	std::cout << "Maximum: "; myRBTree.maximum()->print(); std::cout << std::endl;
+	std::cout << "Minimum: "; myRBTree.minimum()->print(); std::cout << std::endl;
+	
+	std::cout << "Deleting the Minimum: " << std::endl; myRBTree.remove(myRBTree.minimum()); myRBTree.print(); std::cout << std::endl;
+	std::cout << "Maximum: "; myRBTree.maximum()->print(); std::cout << std::endl;
+	std::cout << "Minimum: "; myRBTree.minimum()->print(); std::cout << std::endl;
 }
 
 int main(int argc, char** argv)

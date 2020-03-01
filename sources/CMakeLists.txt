@@ -20,4 +20,7 @@ data_structures/Hash.h
 data_structures/Deque.h 
 data_structures/Tree.h 
 data_structures/NodeBinaryTree.h 
-data_structures/BinaryTree.h)
+data_structures/BinaryTree.h
+data_structures/NodeRBTree.h
+data_structures/RBTree.h
+)

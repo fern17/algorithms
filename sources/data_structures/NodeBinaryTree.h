@@ -15,7 +15,7 @@ class NodeBinaryTree
 {
 public:
 	/*! Constructor */
-	NodeBinaryTree() : m_left(nullptr), m_right(nullptr), m_parent(nullptr), m_value(nullptr) {}
+	NodeBinaryTree() : m_left(nullptr), m_right(nullptr), m_parent(nullptr), m_key(nullptr), m_value(nullptr) {}
 	/*! Constructor 
 	\param key The key to use for the node.
 	\param value The value to use for the node.
