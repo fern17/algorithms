@@ -11,6 +11,7 @@
 #include "Hash.h"
 #include "BinaryTree.h"
 #include "RBTree.h"
+#include "DynamicProgramming.h"
 
 void testSorting(int vectorLength)
 {
@@ -241,11 +242,34 @@ void testDataStructures()
 	std::cout << "Minimum: "; myRBTree.minimum()->print(); std::cout << std::endl;
 }
 
+void testTechniques()
+{
+	std::cout << "Testing Algorithms Techniques:" << std::endl;
+	std::vector<int> v{ 1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
+	int n = 4 ;
+	std::vector<int> s;
+
+	
+	std::cout << "Initial Vector: " << std::endl;
+	Tools::print(v);
+	std::cout << "N = " << n << std::endl;
+	std::cout << "Cutting Rod Memoized Solution: " << Algorithms::cut_rod_memoized(v, n) << std::endl;
+	
+	std::cout << "Cutting Rod Bottom Up Solution: " << Algorithms::cut_rod_bottom_up(v, n, s) << std::endl;
+	int nn = n;
+	while (nn > 0)
+	{
+		std::cout << s[nn] << ' ';
+		nn = nn - s[nn];
+	}
+}
+
 int main(int argc, char** argv)
 {
 	//testSorting(10);
 	//testSearching();
-	testDataStructures();
+	//testDataStructures();
+	testTechniques();
 	
 	return 0;
 }
