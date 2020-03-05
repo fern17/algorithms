@@ -27,5 +27,6 @@ data_structures/NodeBinaryTree.h
 data_structures/BinaryTree.h
 data_structures/NodeRBTree.h
 data_structures/RBTree.h
+data_structures/Matrix.h
 techniques/DynamicProgramming.h
 )

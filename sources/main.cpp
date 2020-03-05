@@ -12,6 +12,7 @@
 #include "BinaryTree.h"
 #include "RBTree.h"
 #include "DynamicProgramming.h"
+#include "Matrix.h"
 
 void testSorting(int vectorLength)
 {
@@ -249,19 +250,53 @@ void testTechniques()
 	int n = 4 ;
 	std::vector<int> s;
 
-	
+	std::cout << "=======================" << std::endl;
+	std::cout << "Cutting Rod Problem: " << std::endl;
 	std::cout << "Initial Vector: " << std::endl;
 	Tools::print(v);
 	std::cout << "N = " << n << std::endl;
 	std::cout << "Cutting Rod Memoized Solution: " << Algorithms::cut_rod_memoized(v, n) << std::endl;
 	
 	std::cout << "Cutting Rod Bottom Up Solution: " << Algorithms::cut_rod_bottom_up(v, n, s) << std::endl;
+	std::cout << "Cut Solution: ";
 	int nn = n;
 	while (nn > 0)
 	{
 		std::cout << s[nn] << ' ';
 		nn = nn - s[nn];
 	}
+	std::cout << std::endl;
+
+	std::cout << "=======================" << std::endl;
+	std::cout << "Matrix Multiplication: " << std::endl;
+	std::vector<std::vector<double> > A;
+	std::vector<std::vector<double> > B;
+	std::vector<std::vector<double> > C;
+	Tools::generateRandomMatrix(A, 4, 4, 0.0, 100.0);
+	Tools::generateRandomMatrix(B, 4, 4, 0.0, 100.0);
+	Algorithms::matrix_multiply(A, B, C);
+	std::cout << "A:\n";
+	Tools::print_matrix(A);
+	std::cout << "B:\n";
+	Tools::print_matrix(B);
+	std::cout << "C = A*B:\n";
+	Tools::print_matrix(C);
+	std::cout << "=======================" << std::endl;
+
+	std::cout << "Matrix Chaining Problem: " << std::endl;
+	std::vector<int> P = { 30, 35, 15, 5, 10, 20, 25 };
+	std::cout << "Matrix Sizes: " << std::endl;
+	for (int i = 1; i < P.size(); ++i)
+	{
+		std::cout << "A_" << i << " = " << P[i-1] << "x" << P[i] << std::endl;
+	}
+	std::vector<std::vector<int> > S;
+	int numberOperations = Algorithms::matrix_chain_order(P, S);
+	std::cout << "Minimum number of operations = " << numberOperations << std::endl;
+	Algorithms::print_optimal_parents(S);
+
+	std::cout << "=======================" << std::endl;
+
 }
 
 int main(int argc, char** argv)

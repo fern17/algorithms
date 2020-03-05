@@ -34,6 +34,12 @@ namespace Tools
     }
 
     /**
+    \brief A function that prints the content of a matrix, with the given separator between values in the row,
+    **/
+    void print_matrix(std::vector<std::vector<double> >& A, std::string separator = " ");
+  
+
+    /**
     \brief A function that generates a random vector of n integers in the range [lower_bound, upper_bound].
     **/
 	void generateRandomVector(std::vector<int>& v, unsigned int n, int lower_bound, int upper_bound);
@@ -42,6 +48,11 @@ namespace Tools
     \brief A function that generates a random vector of n doubles in the range [lower_bound, upper_bound].
     **/
     void generateRandomVector(std::vector<double>& v, unsigned int n, double lower_bound, double upper_bound);
+
+    /**
+    \brief A function that generates a random matrix with size n*m and values in the range [lower_bound, upper_bound].
+    **/
+    void generateRandomMatrix(std::vector<std::vector<double> >& A, unsigned int n, unsigned int m, double lower_bound, double upper_bound);
 
     /**
     \brief A function that generates a random integer value in the range [lower_bound, upper_bound].

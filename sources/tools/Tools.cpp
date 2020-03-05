@@ -30,6 +30,34 @@ namespace Tools
 		}
 	}
 
+	void generateRandomMatrix(std::vector<std::vector<double> >& A, unsigned int n, unsigned int m, double lower_bound, double upper_bound)
+	{
+		A.clear();
+		A.resize(n);
+		for (int i = 0; i < n; ++i)
+		{
+			A[i].resize(m, 0.0);
+			for (int j = 0; j < m; ++j)
+			{
+				A[i][j] = Tools::random(lower_bound, upper_bound);
+			}
+		}
+	}
+
+	void print_matrix(std::vector<std::vector<double> >& A, std::string separator)
+	{
+		size_t n = A.size();
+		for (int i = 0; i < n; ++i)
+		{
+			size_t m = A[i].size();
+			for (int j = 0; j < m; ++j)
+			{
+				std::cout << A[i][j] << separator;
+			}
+			std::cout << std::endl;
+		}
+	}
+
 	int random(int lower_bound, int upper_bound)
 	{
 		static std::random_device rd;
