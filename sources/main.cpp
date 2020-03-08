@@ -291,12 +291,20 @@ void testTechniques()
 		std::cout << "A_" << i << " = " << P[i-1] << "x" << P[i] << std::endl;
 	}
 	std::vector<std::vector<int> > S;
-	int numberOperations = Algorithms::matrix_chain_order(P, S);
+	size_t numberOperations = Algorithms::matrix_chain_order(P, S);
 	std::cout << "Minimum number of operations = " << numberOperations << std::endl;
 	Algorithms::print_optimal_parents(S);
 
 	std::cout << "=======================" << std::endl;
 
+	std::cout << "Longest Common Subsequence: " << std::endl;
+	//std::string X = "ABCBDAB";
+	//std::string Y = "BDCABA";
+	std::string X = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA";
+	std::string Y = "GTCGTTCGGAATGCCGTTGCTCTGTAAA";
+	Algorithms::longest_common_subsequence(X, Y);
+
+	std::cout << "=======================" << std::endl;
 }
 
 int main(int argc, char** argv)

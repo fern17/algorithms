@@ -138,6 +138,98 @@ namespace Algorithms
 		std::cout << std::endl;
 	}
 
+	/*! Enum helper to use in the Longest Common Subsequence problem. */
+	enum
+	{
+		DIR_UP = 0,
+		DIR_LEFT = 1,
+		DIR_DIAG_LEFT = 2
+	}LCSDir;
+
+
+	/*!
+	Solve the Longest Common Subsequence problem.
+	\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 15.4.
+	*/
+	void longest_common_subsequence(std::string& X, std::string& Y, std::vector<std::vector<int> >& C, std::vector<std::vector<int> >& B)
+	{	
+		size_t m = X.length();
+		size_t n = Y.length();
+		
+		B.clear();
+		B.resize(m+1);
+		for (size_t i = 0; i < (m+1); ++i)
+		{
+			B[i].resize(n+1, 0);
+		}
+
+		C.clear();
+		C.resize(m+1);
+		for (size_t i = 0; i < (m+1); ++i)
+		{
+			C[i].resize(n+1, 0);
+		}
+
+		for (int i = 1; i <= m; ++i)
+		{
+			for (int j = 1; j <= n; ++j)
+			{
+				if (X[i - 1] == Y[j - 1])
+				{
+					C[i][j] = C[i - 1][j - 1] + 1;
+					B[i][j] = DIR_DIAG_LEFT;
+				}
+				else if (C[i - 1][j] >= C[i][j - 1])
+				{
+					C[i][j] = C[i - 1][j];
+					B[i][j] = DIR_UP;
+				}
+				else
+				{
+					C[i][j] = C[i][j - 1];
+					B[i][j] = DIR_LEFT;
+				}
+			}
+		}
+	}
+
+	/*!
+	Helper to print the solution of the Longest Common Subsequence problem.
+	*/
+	void longest_common_subsequence_print(std::vector<std::vector<int> >& B, std::string& X, size_t i, size_t j)
+	{
+		if (i == 0 || j == 0)
+		{
+			return;
+		}
+
+		if (B[i][j] == DIR_DIAG_LEFT)
+		{
+			longest_common_subsequence_print(B, X, i - 1, j - 1);
+			std::cout << X[i - 1];
+		}
+		else if (B[i][j] == DIR_UP)
+		{
+			longest_common_subsequence_print(B, X, i - 1, j);
+		}
+		else
+		{
+			longest_common_subsequence_print(B, X, i, j-1);
+		}
+	}
+
+	/*!
+	Solve the Longest Common Subsequence problem.
+	\see "Introduction to Algorithms", 3rd Edition, 2009. Thomas Cormen et al. MIT Press. Chapter 15.4.
+	*/
+	void longest_common_subsequence(std::string& X, std::string& Y)
+	{
+		std::vector<std::vector<int> > B;
+		std::vector<std::vector<int> > C;
+		longest_common_subsequence(X, Y, C, B);
+		longest_common_subsequence_print(B, X, X.length(), Y.length());
+		std::cout << std::endl;
+	}
 }
 
 #endif
